@@ -8,12 +8,17 @@ import csv
 
 def getGazeValues(file):
 	df = pd.read_csv(file,sep='\t')
+
+	participantID=df['Participant name'][0]
+	# print("participantID",participantID)
+
 	df=df[["Event","Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"]]  # select columns
 
 	normal_start_idx=df[df['Event'] == 'Normal Trial Start'].index.to_numpy() 
 	normal_stop_idx=df[df['Event'] == 'Normal Trail End'].index.to_numpy() 
 	attack_start_idx=df[df['Event'] == 'Attack Trial Start'].index.to_numpy() 
 	attack_stop_idx=df[df['Event'] == 'Attack Trial End'].index.to_numpy() 
+	
 
 	# print(normal_start_idx)
 	# print(normal_stop_idx)
@@ -32,7 +37,7 @@ def getGazeValues(file):
 	for i in range(stop_idx.shape[0]):
 		alltrials.append(df.loc[start_idx[i]:stop_idx[i]].dropna(subset = ["Gaze point X", "Gaze point Y"]).to_numpy())
 		# CAUTION: dropping NA values for "Gaze point X", "Gaze point Y" only. To drop all NA values use .dropna()
-	return(alltrials)
+	return(alltrials, participantID)
 
 def getAOI(nx, ny, screen_dimension):
 	x = np.linspace(0, screen_dimension[0], nx)
@@ -58,7 +63,7 @@ def getAOI(nx, ny, screen_dimension):
 
 	return(aoiDict)
 
-def getSGE_GTE(trials):
+def getSGE_GTE(trials,participantID):
 	"""
 	input: gaze and fixation data for one participant (i.e. 20 trials. 10 normal, 10 attack)
 	output: list of 40 elements (10 normal SGE, 10 attack SGE, 10 normal GTE, 10 attack GTE)
@@ -83,7 +88,7 @@ def getSGE_GTE(trials):
 		# print(SGE,GTE)
 		SGEdata.append(SGE)
 		GTEdata.append(GTE)
-	return(SGEdata+GTEdata)
+	return([participantID]+SGEdata+GTEdata)
 
 
 if __name__ == '__main__':
@@ -94,18 +99,18 @@ if __name__ == '__main__':
 
 	for f in sorted(glob.glob(folder_name + "/*.tsv")):
 		print("Processing file: ",f)
-		trials=getGazeValues(f) #"Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"
+		trials, participantID=getGazeValues(f) #"Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"
 		if len(trials)<20:
 			print("Incomplete data for this file {}".format(f))
 		else:
-			gazedata=getSGE_GTE(trials) 
+			gazedata=getSGE_GTE(trials,participantID) 
 			allgazedata.append(gazedata)
 
 	with open("gazedata.csv", 'w') as csvfile: 
 	    # creating a csv writer object 
 	    csvwriter = csv.writer(csvfile) 
 	    # writing the fields 
-	    csvwriter.writerow(["SGE normal"]*10 + ["SGE attack"]*10 + ["GTE normal"]*10 + ["GTE attack"]*10) 
+	    csvwriter.writerow(["ID"]+["SGE normal"]*10 + ["SGE attack"]*10 + ["GTE normal"]*10 + ["GTE attack"]*10) 
 	    # writing the data rows 
 	    csvwriter.writerows(allgazedata)
 
