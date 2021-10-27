@@ -9,8 +9,11 @@ import csv
 def getGazeValues(file):
 	df = pd.read_csv(file,sep='\t')
 
-	participantID=df['Participant name'][0]
-	# print("participantID",participantID)
+	try:
+		participantID=df['Participant name'][0]
+	except IndexError as e:
+		print("Error Processing file: ",file)
+		participantID=str(file)
 
 	# df=df[["Event","Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"]]  # select columns
 	df=df[["Event","Gaze point X [MCS px]", "Gaze point Y [MCS px]","Gaze event duration [ms]","Fixation point X [MCS px]","Fixation point Y [MCS px]"]]  # select columns
