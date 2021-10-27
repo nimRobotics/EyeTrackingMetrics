@@ -12,7 +12,8 @@ def getGazeValues(file):
 	participantID=df['Participant name'][0]
 	# print("participantID",participantID)
 
-	df=df[["Event","Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"]]  # select columns
+	# df=df[["Event","Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"]]  # select columns
+	df=df[["Event","Gaze point X [MCS px]", "Gaze point Y [MCS px]","Gaze event duration [ms]","Fixation point X [MCS px]","Fixation point Y [MCS px]"]]  # select columns
 
 	normal_start_idx=df[df['Event'] == 'Normal Trial Start'].index.to_numpy() 
 	normal_stop_idx=df[df['Event'] == 'Normal Trail End'].index.to_numpy() 
@@ -31,11 +32,11 @@ def getGazeValues(file):
 	# print(start_idx)
 	# print(stop_idx)
 
-	df=df[["Gaze point X", "Gaze point Y","Gaze event duration","Fixation point X","Fixation point Y"]]  # select columns
+	df=df[["Gaze point X [MCS px]", "Gaze point Y [MCS px]","Gaze event duration [ms]","Fixation point X [MCS px]","Fixation point Y [MCS px]"]]  # select columns
 
 	alltrials=[]
 	for i in range(stop_idx.shape[0]):
-		alltrials.append(df.loc[start_idx[i]:stop_idx[i]].dropna(subset = ["Gaze point X", "Gaze point Y"]).to_numpy())
+		alltrials.append(df.loc[start_idx[i]:stop_idx[i]].dropna(subset = ["Gaze point X [MCS px]", "Gaze point Y [MCS px]"]).to_numpy())
 		# CAUTION: dropping NA values for "Gaze point X", "Gaze point Y" only. To drop all NA values use .dropna()
 	return(alltrials, participantID)
 
