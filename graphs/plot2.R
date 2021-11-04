@@ -25,6 +25,8 @@ summary(gaze)
 
 SGE<-gaze[gaze$entropytype=="SGE",]
 GTE<-gaze[gaze$entropytype=="GTE",]
+# correct trial numbers
+GTE$time<-GTE$time - 20
 
 require(ggplot2)
 jpeg("sge.jpg", width = 1920, height = 1080)
@@ -108,13 +110,14 @@ res
 jpeg("sge_trialwise.jpg", width = 1920, height = 1080)
 # Visualization
 linebox<-ggplot(SGE, aes(x = time, y = Value)) + 
-  geom_line(aes(color = ID, linetype = ID)) +
+  # geom_line(aes(color = ID, linetype = ID)) +
+  geom_line(aes(color = ID))+
   #  + scale_color_manual(values = c("darkred", "steelblue"))
   labs(title="Gaze entropy vs Trials",x = "Trials", y = "SGE") +
   theme(axis.title = element_text(size = 32), 
         axis.text = element_text(size = 26),
         plot.title = element_text(size=32),
-        # legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.key.size = unit(1, 'cm'), #change legend key size
         legend.title = element_text(size=26), #change legend title font size
         legend.text = element_text(size=26)) #change legend text font size
 linebox
@@ -124,12 +127,126 @@ dev.off()
 jpeg("gte_trialwise.jpg", width = 1920, height = 1080)
 # Visualization
 ggplot(GTE, aes(x = time, y = Value)) + 
-  geom_line(aes(color = ID, linetype = ID))+
-  labs(title="Gaze entropy vs Trials",x = "Trials", y = "SGE") +
+  geom_line(aes(color = ID))+
+  labs(title="Gaze entropy vs Trials",x = "Trials", y = "GTE") +
   theme(axis.title = element_text(size = 32), 
         axis.text = element_text(size = 26),
         plot.title = element_text(size=32),
-        # legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.key.size = unit(1, 'cm'), #change legend key size
         legend.title = element_text(size=26), #change legend title font size
         legend.text = element_text(size=26)) #change legend text font size
 dev.off()
+
+# ----------------------------------------------
+
+
+
+sge_male<-SGE[SGE$Gender=="Male",]
+sge_female<-SGE[SGE$Gender=="Female",]
+
+require(ggplot2)
+jpeg("sge_male.jpg", width = 1920, height = 1080)
+box<- ggplot(data=sge_male, aes(x=ID, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Male participants", y = "SGE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+require(ggplot2)
+jpeg("sge_female.jpg", width = 1920, height = 1080)
+box<- ggplot(data=sge_female, aes(x=ID, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Female participants", y = "SGE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+
+
+
+gte_male<-GTE[GTE$Gender=="Male",]
+gte_female<-GTE[GTE$Gender=="Female",]
+
+require(ggplot2)
+jpeg("gte_male.jpg", width = 1920, height = 1080)
+box<- ggplot(data=gte_male, aes(x=ID, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Male participants", y = "GTE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+require(ggplot2)
+jpeg("gte_female.jpg", width = 1920, height = 1080)
+box<- ggplot(data=gte_female, aes(x=ID, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Female participants", y = "GTE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+
+# ---------------------------------------------
+
+require(ggplot2)
+jpeg("sge_sexes.jpg", width = 1920, height = 1080)
+box<- ggplot(data=GTE, aes(x=Gender, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Gender", y = "SGE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+
+
+
+require(ggplot2)
+jpeg("gte_sexes.jpg", width = 1920, height = 1080)
+box<- ggplot(data=SGE, aes(x=Gender, y=Value))+
+  geom_boxplot(notch = FALSE, width=.4, aes(fill=trialtype))+
+  labs(title="Gaze entropy",x = "Gender", y = "GTE")+
+  geom_jitter(size = 1, alpha = 0.1, width = 0.2)+
+  theme(axis.title = element_text(size = 32), 
+        axis.text = element_text(size = 26),
+        plot.title = element_text(size=32),
+        legend.key.size = unit(3, 'cm'), #change legend key size
+        legend.title = element_text(size=26), #change legend title font size
+        legend.text = element_text(size=26)) #change legend text font size
+box
+dev.off() 
+
+
+# ---------------------------------
+
+
