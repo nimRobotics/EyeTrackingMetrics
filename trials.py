@@ -39,8 +39,10 @@ def getGazeValues(file):
 
 	alltrials=[]
 	for i in range(stop_idx.shape[0]):
-		alltrials.append(df.loc[start_idx[i]:stop_idx[i]].dropna(subset = ["Gaze point X [MCS px]", "Gaze point Y [MCS px]"]).to_numpy())
+		alltrials.append(df.loc[start_idx[i]:stop_idx[i]].dropna().to_numpy())
 		# CAUTION: dropping NA values for "Gaze point X", "Gaze point Y" only. To drop all NA values use .dropna()
+		np.save(file.split(".")[0], alltrials)
+		print(alltrials)
 	return(alltrials, participantID)
 
 def getAOI(nx, ny, screen_dimension):
