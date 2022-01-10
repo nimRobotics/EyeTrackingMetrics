@@ -1,0 +1,160 @@
+Processing file:  data_/Project2 Recording005.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording007.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording008.tsv
+Number of normal trials:  10
+Number of attack trials:  11
+
+Processing file:  data_/Project2 Recording009.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording010.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording011.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording012.tsv
+Number of normal trials:  13
+Number of attack trials:  0
+
+Processing file:  data_/Project2 Recording013.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording014.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording015.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording016.tsv
+Number of normal trials:  5
+Number of attack trials:  0
+
+Processing file:  data_/Project2 Recording017.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording018.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording019.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording020.tsv
+Number of normal trials:  10
+Number of attack trials:  11
+
+Processing file:  data_/Project2 Recording021.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording022.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording023.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording026.tsv
+Number of normal trials:  11
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording027.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording028.tsv
+Number of normal trials:  10
+Number of attack trials:  11
+
+Processing file:  data_/Project2 Recording029.tsv
+Number of normal trials:  10
+Number of attack trials:  9
+
+Processing file:  data_/Project2 Recording031.tsv
+Error: Length of Attack Start and Stop indices are not equal
+Number of normal trials:  10
+Number of attack trials:  3
+
+Processing file:  data_/Project2 Recording032.tsv
+Number of normal trials:  6
+Number of attack trials:  0
+
+Processing file:  data_/Project2 Recording033.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording035.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording036.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording037.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording038.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording039.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording040.tsv
+Number of normal trials:  0
+Number of attack trials:  0
+
+Processing file:  data_/Project2 Recording041.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/Project2 Recording042.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording037.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording038.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording039.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording040.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording041.tsv
+Number of normal trials:  0
+Number of attack trials:  0
+
+Processing file:  data_/SAI34-40 Recording043.tsv
+Number of normal trials:  10
+Number of attack trials:  10
+
+Processing file:  data_/SAI34-40 Recording044.tsv
+Number of normal trials:  10
+Number of attack trials:  10

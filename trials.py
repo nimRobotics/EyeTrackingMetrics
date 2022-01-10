@@ -120,8 +120,8 @@ def writeToCSV(data,filename):
 if __name__ == '__main__':
 	TEST_SCREENDIM = [1920,1080]
 	TEST_AOI_DICT=getAOI(11,11,TEST_SCREENDIM)
-	# folder_name = 'data_'
-	folder_name = 'testdata'
+	folder_name = 'data_'
+	# folder_name = 'testdata'
 
 	allNormalSGE=[]
 	allNormalGTE=[]
